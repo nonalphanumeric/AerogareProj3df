@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="javafx">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/TD_1_base_common/dependencies/javafx/javafx.base.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TD_1_base_common/dependencies/javafx/javafx.controls.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TD_1_base_common/dependencies/javafx/javafx.graphics.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

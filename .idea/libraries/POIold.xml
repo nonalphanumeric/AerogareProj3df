@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="POIold">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/TD_1_base_common/dependencies/POIold/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TD_1_base_common/dependencies/POIold/poi-ooxml-3.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TD_1_base_common/dependencies/POIold/commons-collections4-4.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TD_1_base_common/dependencies/POIold/curvesapi-1.04.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TD_1_base_common/dependencies/POIold/xmlbeans-2.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TD_1_base_common/dependencies/POIold/poi-3.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TD_1_base_common/dependencies/POIold/commons-codec-1.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TD_1_base_common/dependencies/POIold/poi-scratchpad-3.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TD_1_base_common/dependencies/POIold/log4j-1.2.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TD_1_base_common/dependencies/POIold/poi-examples-3.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TD_1_base_common/dependencies/POIold/junit-4.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TD_1_base_common/dependencies/POIold/poi-excelant-3.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TD_1_base_common/dependencies/POIold/poi-ooxml-schemas-3.17.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="jsonb">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/TD_1_base_common/dependencies/jsonb/jakarta.json.bind-api-2.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TD_1_base_common/dependencies/jsonb/yasson-2.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TD_1_base_common/dependencies/jsonb/jakarta.json-2.0.0-module.jar!/" />
+      <root url="jar://$PROJECT_DIR$/TD_1_base_common/dependencies/jsonb/jakarta.json-api-2.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
