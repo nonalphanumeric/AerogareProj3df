@@ -1,6 +1,7 @@
 package engine;
 
 import enstabretagne.base.logger.Logger;
+import enstabretagne.base.time.LogicalDateTime;
 import enstabretagne.base.time.LogicalDuration;
 
 public class PlanMonitor {
@@ -22,13 +23,16 @@ public class PlanMonitor {
         Logger.Information(this, "main", "D�but du plan d'exp�rience");
 
         //on boucle sur les sc�narios
+
         while (plan.hasNextScenario()) {
             //� chaque sc�nario on demande la cr�ation des entit�s de simulation correspondantes
+
             plan.nextScenario().createSimEntity();
 
             //la cr�ation des entit�s a �t� port�e � la connaissance du moteur
             //noter que de nouvelles entit�s pourront �tre cr��es au cours de la simulation
-            engine.initSimulation(engine.getCurrentDate() ,engine.getCurrentDate().add(LogicalDuration.ofMinutes(10)) );
+            LogicalDateTime init = new LogicalDateTime("04/12/2019 14:00");
+            engine.initSimulation(init, init.add(LogicalDuration.ofSeconds(40)));
             //d�clenchement de la boucle de simulation
             engine.simulate();
             //fin du run, nettoyage du moteur en vue de la possible prochaine ex�cution de sc�nario

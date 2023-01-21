@@ -29,15 +29,26 @@ public class PlanAerogare extends Plan {
         //premier sc�nario: sc�nario � un seul �tudiant
         for (int i = 0; i < getNbReplique(); i++)
             aeroSC.add(
-                    new ScenarioSimple(getEngine(), new ScenarioSimpleInitData("ident", i, debut, fin)));
+                    new ScenarioSimple(getEngine(), new ScenarioSimpleInitData("ident", i, debut, fin, 3)));
 
     }
     @Override
     public boolean hasNextScenario() {
+        if (aeroSC.size()>0) {
+            return true;
+        }
         return false;
     }
+
     @Override
     public Scenario nextScenario() {
+        if (hasNextScenario()) {
+            //on recupère le dernier scenario
+            Scenario sc = aeroSC.pop();
+            //on donne le sc�nario suivant au moteur
+            engine.setCurrentScenario(sc);
+            return sc;
+        }
         return null;
     }
 }

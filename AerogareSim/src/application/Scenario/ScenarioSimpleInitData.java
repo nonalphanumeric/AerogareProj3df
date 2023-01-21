@@ -5,15 +5,17 @@ import engine.ScenarioInitData;
 import enstabretagne.base.time.LogicalDateTime;
 
 public class ScenarioSimpleInitData extends ScenarioInitData {
+     int nbAvions;
     int graine;
     LogicalDateTime debut;
     LogicalDateTime fin;
 
-    public ScenarioSimpleInitData(String id, int graine, LogicalDateTime debut, LogicalDateTime fin) {
+    public ScenarioSimpleInitData(String id, int graine, LogicalDateTime debut, LogicalDateTime fin, int nbAvions) {
         super(id);
         this.debut=debut;
         this.fin=fin;
         this.graine = graine;
+        this.nbAvions = nbAvions;
     }
     public int getGraine() {
         return graine;

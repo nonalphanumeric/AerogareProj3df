@@ -21,8 +21,9 @@ public class SimEngine implements IScenarioIdProvider, ISimulationDateProvider {
     protected List<SimEntity> mesSimEntities;
 
     private LogicalDateTime currentDate;
-    protected LogicalDateTime getCurrentDate()
+    public LogicalDateTime getCurrentDate()
     {
+
         return currentDate;
     }
 
@@ -86,6 +87,7 @@ public class SimEngine implements IScenarioIdProvider, ISimulationDateProvider {
      */
     //si il y a un event apres
     public boolean hasANextEvent(){
+        //System.out.println(echeancier.first());
         if(echeancier.size()>0) {
             if(echeancier.first().getDateOccurence().compareTo(fin)<=0) return true;
         }
@@ -93,7 +95,9 @@ public class SimEngine implements IScenarioIdProvider, ISimulationDateProvider {
     }
     public void simulate()
     {
+
         //simple parcours de l'�ch�ancier
+
         while(hasANextEvent())
         {
             //on prend le premier �v�nement suivant de l'�ch�ancier

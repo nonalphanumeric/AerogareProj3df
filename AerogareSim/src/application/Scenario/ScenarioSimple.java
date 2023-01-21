@@ -8,8 +8,11 @@ import engine.Scenario;
 import engine.ScenarioInitData;
 import engine.SimEngine;
 import engine.SimEvent;
+import enstabretagne.base.logger.Logger;
 import enstabretagne.base.time.LogicalDateTime;
 import enstabretagne.base.time.LogicalDuration;
+
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 
 public class ScenarioSimple extends Scenario {
 
@@ -18,6 +21,7 @@ public class ScenarioSimple extends Scenario {
 
         super(engine, initSc);
         scenarioSimpleInitData = (ScenarioSimpleInitData) initSc;
+
     }
     @Override
     public int getGraine() {
@@ -25,14 +29,29 @@ public class ScenarioSimple extends Scenario {
     }
     @Override
     public void createSimEntity() {
+
         Airport airport = new Airport(getEngine(),scenarioSimpleInitData);
-        Piste piste = new Piste(getEngine(),scenarioSimpleInitData);
+        System.out.println(airport.toString());
+        Piste piste = new Piste(getEngine(),scenarioSimpleInitData,1 );
+
+        Logger.Information(this, "creerentite", "nombre d'avions =" + getNbAvions());
+        System.out.println(getNbAvions());
+        for(int i=0;i<getNbAvions();i++) {
+            CreerAvion creerAvion = new CreerAvion(scenarioSimpleInitData.debut);
+            creerAvion.process();
+        }
+
     }
 
     @Override
     protected void init() {
         super.init();
         Post(new CreerAvion(getEngine().SimulationDate()));
+    }
+    int nbAvions;
+    //modifer la methode, faire evoluer selon les depart et arrivées
+    public int getNbAvions(){
+        return 6;
     }
     public int numAvion;
     public class CreerAvion extends SimEvent{
@@ -52,6 +71,11 @@ public class ScenarioSimple extends Scenario {
 
             //rescheduleAt(getEngine().SimulationDate().add(getNextDateAvionCreation()));
         }
+
+    }
+    @Override
+    public void terminate(){
+
     }
 
 }
