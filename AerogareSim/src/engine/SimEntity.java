@@ -56,7 +56,9 @@ public abstract class SimEntity {
      en effet, le moteur ne peut pas savoir quand il est opportun de d�clencher l'init pour cette entit�*/
 
     public void requestInit() {
-        if(etat==EtatEntity.NONE) init();
+        if(etat==EtatEntity.NONE) {
+            init();
+        }
     }
 
     //m�thode � surcharger

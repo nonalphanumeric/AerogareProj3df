@@ -1,5 +1,6 @@
 package engine;
 
+import application.Piste;
 import enstabretagne.base.logger.Logger;
 import enstabretagne.base.math.MoreRandom;
 import enstabretagne.base.time.LogicalDateTime;
@@ -165,6 +166,15 @@ public class SimEngine implements IScenarioIdProvider, ISimulationDateProvider {
 
     @Override
     public LogicalDateTime SimulationDate() {
+        return null;
+    }
+
+    public Piste getPiste() {
+        for (SimEntity e : mesSimEntities) {
+            if (e instanceof Piste) {
+                return (Piste) e;
+            }
+        }
         return null;
     }
 }

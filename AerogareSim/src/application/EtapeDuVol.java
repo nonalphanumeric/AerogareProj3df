@@ -1,0 +1,6 @@
+package application;
+
+public enum EtapeDuVol {
+    EN_VOL, DEMANDE_ATTERISSAGE, ATTERISSAGE, SUR_PISTE, SUR_TW1, AU_GATE,
+    DEMANDE_DECOLLAGE, SUR_TW2, DECOLLAGE
+}

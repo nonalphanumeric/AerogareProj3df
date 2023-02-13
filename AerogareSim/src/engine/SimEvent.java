@@ -30,4 +30,5 @@ public abstract class SimEvent implements Comparable<SimEvent>{
     //m�thode � surcharger pour ex�cuter une action
     public abstract void process();
 
+
 }

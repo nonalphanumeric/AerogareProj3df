@@ -1,21 +1,22 @@
 package application;
 
 import application.avion.Avion;
-import engine.SimEntity;
 import engine.SimEvent;
 import enstabretagne.base.logger.Logger;
 import enstabretagne.base.time.LogicalDateTime;
-
-import java.util.List;
 
 /**
  * correspond à l'evenement atterissage
  */
 public class Atterissage extends SimEvent {
     private String id;
-    public Atterissage(LogicalDateTime d, String id) {
-        super(d);
-        this.id = id;
+    Avion avion ;
+    LogicalDateTime date;
+    public Atterissage(LogicalDateTime date, Avion avion) {
+        super(date);
+        this.date = date;
+        this.avion = avion;
+
     }
 
     @Override
@@ -25,7 +26,9 @@ public class Atterissage extends SimEvent {
 
     @Override
     public void process() {
-        Logger.Detail(entitePorteuseEvenement, "atterissage.Process","Atterissage de l'avion :" + id);
-        List<SimEntity> Avions = entitePorteuseEvenement.recherche(e -> ((e instanceof Avion)));
+        //evenement atterissage
+
+        Logger.Detail(entitePorteuseEvenement, "atterissage.Process","Atterissage de l'avion :" + avion.getInitData().getId());
+        System.out.println("Atterissage de l'avion :" + avion.getInitData().getId());
     }
 }

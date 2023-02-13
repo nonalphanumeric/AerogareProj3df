@@ -4,6 +4,7 @@ import application.*;
 import engine.SimEngine;
 import engine.SimEntity;
 import enstabretagne.base.logger.Logger;
+
 import enstabretagne.base.time.LogicalDateTime;
 import enstabretagne.base.time.LogicalDuration;
 
@@ -12,9 +13,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class Avion extends SimEntity{
+
+    public String etapeDuVol;
+    public TourDeControl tour;
     public Avion(SimEngine engine, InitAvion initAvion) {
         super(engine, initAvion);
         System.out.println("Id de l'avion " +initAvion.getId());
+        init();
         //int numVol;
 
     }
@@ -23,18 +28,16 @@ public class Avion extends SimEntity{
     protected void init() {
         super.init();
 
-        List<SimEntity> airport = recherche(e -> ((e instanceof Airport)));
-        List<SimEntity> piste = recherche((e-> ((e instanceof Piste))));
-         // à mettre : if piste libre alors post atterissage
+        this.etapeDuVol = String.valueOf(EtapeDuVol.EN_VOL);
 
-        Post(new Atterissage(getEngine().getCurrentDate().Now(), getInitData().getId()));
         //Log post apres init
-        Logger.Detail(this, "Avion.init","Avion initialisé: " + getInitData().getId());
+        Logger.Detail(this, "Avion.init","Avion initialisé: " + getInitData().getId() );
     }
 
     public void decollage(){
-        //Decollage decollage = new Decollage();
-        Runnable behaviour = this::atterissage; // syntax 1, method reference
+        //Decollage decollage = new Decollage()
+        Runnable behaviour = this::decollage; // syntax 1, method reference
+        getEngine().post(getEngine().SimulationDate(),behaviour);
 /*        behaviour = () -> this.atterissage(); // syntax 2, lambda
 
         behaviour = new Runnable() {
@@ -44,12 +47,42 @@ public class Avion extends SimEntity{
             }
         };*/
 
-        getEngine().post(getEngine().SimulationDate(), behaviour);
+
     }
 
     public void atterissage(){
         //Atterissage atterissage = new Atterissage();
-        getEngine().post(getEngine().SimulationDate(), this::decollage);
+        //this::decollage un runnable ?
+        Runnable behaviour = this::atterissage;
+        getEngine().post(getEngine().SimulationDate(), behaviour);
 
     }
+
+    public void demandeAtterissage(Piste piste){
+
+
+
+        //si l'avion est en vol il fait demande d'atterissage
+        //si il a l'autorisation, il commence son atterissage
+        if (tour.autorisationEnterPiste(this)) {
+            Post(new Atterissage(getEngine().SimulationDate(), this));
+            System.out.println("L'avion n°"+ getInitData().getId() + " fait une demande d'atterisage sur la piste "+ piste.getNumPiste());
+            Logger.Detail(this, "Avion.demandeAtterissage","Avion fait demande d'atterissage & atterissage autorisée pour l'avion " + getInitData().getId() );
+
+        } else {
+                Post(new Retard(getEngine().SimulationDate(), this));
+                System.out.println("La piste n'est pas disponible pour faire atterir l'avion "+getInitData().getId());
+                Logger.Detail(this, "Avion.demandeAtterissage","Avion fait demande d'atterissage & atterissage refuséepour l'avion "+getInitData().getId());
+
+        }
+    }
+
+    public void FinAtterrissage(TourDeControl tour) {
+        // La piste est libre
+        getEngine().getPiste().setDispoPiste(true);
+    }
+
+
 }
+
+

@@ -8,4 +8,5 @@ public abstract class InitData {
     public String getId(){
         return id;
     }
+
 }
